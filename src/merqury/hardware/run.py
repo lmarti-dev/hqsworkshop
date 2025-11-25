@@ -1,111 +1,49 @@
 import numpy as np
 
-from qupiter.utils.hardware import (
-    backend_sample,
-    subspace_diagonalize,
-    get_unique_bitstrings,
-    sv_estimate_observables,
-    get_appropriate_fake_backend,
-    get_tfim_ratio,
-    get_counts_from_job,
-    get_backend,
-    add_meas_layer,
-    encode_sampler_result,
-)
 
-from qiskit import QuantumCircuit
+from merqury.utils.hardware import measure_ground_state_energy_subspace_sampling
+from merqury.algorithms.sweep import get_sweep_circuit
+from merqury.hamiltonians.pauliops import TFIM, get_min_gap, get_ground_energy
+
 from qiskit.quantum_info import SparsePauliOp
 
-def measure_ground_state_energy_subspace_sampling(
+
+def compute_ground_energy_sweep(
+    ham_start: SparsePauliOp,
     hamiltonian: SparsePauliOp,
-    ground_energy: float,
-    circuit: QuantumCircuit,
-    n_shots: int = 1e3,
-    run_on_hardware: bool = False,
-    backend_name: str = "AQT",
+    total_time: float,
+    n_steps: int,
+    n_shots: int,
+    device_name: str = "garnet",
 ) -> dict:
-    fake_backend = get_appropriate_fake_backend(circuit.num_qubits, backend_name)
-    ratio = get_tfim_ratio(hamiltonian)
 
-    print(f"n_qubits: {hamiltonian.num_qubits}, j/h {ratio}")
-
-    circuit_to_sample = add_meas_layer(circuit)
-
-    def relerr(e):
-        return np.abs(e - ground_energy) / np.abs(ground_energy)
-
-    fake_job = backend_sample(
-        backend=fake_backend,
-        circuit=circuit_to_sample,
-        parameters=[],
+    ground_energy = get_ground_energy(hamiltonian)
+    sweep_circuit = get_sweep_circuit(
+        ham_start, hamiltonian, total_time=total_time, n_steps=n_steps
+    )
+    energy_dict = measure_ground_state_energy_subspace_sampling(
+        hamiltonian,
+        ground_energy,
+        sweep_circuit,
+        run_on_hardware=True,
+        device_name=device_name,
         n_shots=n_shots,
     )
-    fake_counts = get_counts_from_job(fake_job)
-    fake_unique_bitstring = get_unique_bitstrings(fake_counts)
-    fake_backend_bitstring_prop = len(fake_unique_bitstring) / (2**circuit.num_qubits)
-    fake_backend_energy = subspace_diagonalize(
-        unique_bitstrings=fake_unique_bitstring, ham=hamiltonian
-    )
 
-    statevector_energy = sv_estimate_observables(
-        circuit=circuit, observables=[hamiltonian], param_sweep=[]
-    ).data.evs[0]
+    return energy_dict
 
-    if run_on_hardware:
-        real_backend = get_backend(circuit.num_qubits, backend_name)
-        real_job = backend_sample(
-            backend=real_backend,
-            circuit=circuit_to_sample,
-            parameters=[],
-            n_shots=n_shots,
-        )
-        real_counts = get_counts_from_job(real_job)
-        real_unique_bitstring = get_unique_bitstrings(real_counts)
-        real_bitstring_prop = len(real_unique_bitstring) / (2**circuit.num_qubits)
-        real_backend_energy = subspace_diagonalize(
-            unique_bitstrings=real_unique_bitstring, ham=hamiltonian
-        )
 
-        print(
-            f"RealBackend ({real_backend.name}) {relerr(real_backend_energy):.5e} sub. mat.: {len(real_unique_bitstring)} × {len(real_unique_bitstring)}: {real_bitstring_prop*100:.3f}%"
-        )
+if __name__ == "__main__":
+    ham0, ham1 = TFIM(5, 1, 1, split_parts=True)
 
-    print(f"Statevector {relerr(statevector_energy):.5e}")
+    mult = 1
 
-    print(
-        f"FakeBackend ({fake_backend.name}) {relerr(fake_backend_energy):.5e} sub. mat.: {len(fake_unique_bitstring)} × {len(fake_unique_bitstring)}: {fake_backend_bitstring_prop*100:.3f}%"
-    )
+    total_time = mult / (get_min_gap(ham1) ** 2)
 
-    var_dict = {
-        "fake_backend": {
-            "name": fake_backend.name,
-            "error": relerr(fake_backend_energy),
-            "energy": fake_backend_energy,
-            "unique_bitstrings": fake_unique_bitstring,
-            "bitstring_prop": fake_backend_bitstring_prop,
-            "n_shots": n_shots,
-            "job": encode_sampler_result(fake_job),
-        },
-        "statevector": {
-            "error": relerr(statevector_energy),
-            "energy": statevector_energy,
-        },
-        "system": {
-            "ground_energy": ground_energy,
-            "n_qubits": circuit.num_qubits,
-            "hamiltonian": hamiltonian,
-            "ratio": ratio,
-        },
-    }
-    if run_on_hardware:
-        var_dict["real_backend"] = {
-            "name": real_backend.name,
-            "error": relerr(real_backend_energy),
-            "energy": real_backend_energy,
-            "unique_bitstrings": real_unique_bitstring,
-            "bitstring_prop": real_bitstring_prop,
-            "n_shots": n_shots,
-            "job": encode_sampler_result(real_job),
-        }
+    n_steps = mult * ham0.num_qubits**2
 
-    return var_dict
+    n_shots = 1000
+
+    energy_dict = compute_ground_energy_sweep(ham0, ham1, total_time, n_steps, n_shots)
+
+    print(energy_dict)
