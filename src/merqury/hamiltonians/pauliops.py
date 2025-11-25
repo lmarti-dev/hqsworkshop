@@ -53,3 +53,10 @@ def TFIM(
     hamiltonian = hamiltonian_J + hamiltonian_h
 
     return hamiltonian
+
+
+def solve(hamiltonian: SparsePauliOp):
+    mat = hamiltonian.to_matrix(True)
+
+    eigenvalues, _ = eigsh(mat, k=2, which="SA")
+    return (eigenvalues[1] - eigenvalues[0]) * 27.2114

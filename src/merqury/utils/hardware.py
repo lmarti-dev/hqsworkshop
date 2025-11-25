@@ -15,9 +15,9 @@ from iqm.qiskit_iqm import IQMProvider, IQMBackend, IQMJob
 from qiskit import transpile
 
 import io
+import json
 
-
-from typing import Literal, Union
+from typing import Tuple, Union
 
 from qiskit.primitives.base.sampler_result_v1 import SamplerResult
 from qiskit.circuit.parametertable import ParameterView
@@ -162,7 +162,7 @@ def from_bitstring(b: str, n_qubits: int, right_to_left: bool = False) -> int:
 
 def subspace_diagonalize(
     unique_bitstrings: Union[list[int], list[str]], ham: SparsePauliOp
-):
+) -> Tuple[float, np.ndarray]:
     if isinstance(unique_bitstrings[0], str):
         ind_list = [
             from_bitstring(bx, len(bx), right_to_left=True) for bx in unique_bitstrings
@@ -180,7 +180,7 @@ def subspace_diagonalize(
             sub_ham[x, y] = sparse_ham[ind_x, ind_y]
     sub_ham += np.triu(sub_ham, k=1).T
     ground_energy = np.min(np.linalg.eigvalsh(sub_ham))
-    return ground_energy
+    return ground_energy, sub_ham
 
 
 def isa_circuit_param_dict(
@@ -344,7 +344,7 @@ def measure_ground_state_energy_subspace_sampling(
     fake_counts = get_counts_from_job(fake_job)
     fake_unique_bitstring = get_unique_bitstrings(fake_counts)
     fake_backend_bitstring_prop = len(fake_unique_bitstring) / (2**circuit.num_qubits)
-    fake_backend_energy = subspace_diagonalize(
+    fake_backend_energy, fake_sub_ham = subspace_diagonalize(
         unique_bitstrings=fake_unique_bitstring, ham=hamiltonian
     )
 
@@ -363,7 +363,7 @@ def measure_ground_state_energy_subspace_sampling(
         real_counts = get_counts_from_job(real_job)
         real_unique_bitstring = get_unique_bitstrings(real_counts)
         real_bitstring_prop = len(real_unique_bitstring) / (2**circuit.num_qubits)
-        real_backend_energy = subspace_diagonalize(
+        real_backend_energy, real_sub_ham = subspace_diagonalize(
             unique_bitstrings=real_unique_bitstring, ham=hamiltonian
         )
 
@@ -386,6 +386,7 @@ def measure_ground_state_energy_subspace_sampling(
             "bitstring_prop": fake_backend_bitstring_prop,
             "n_shots": n_shots,
             "job": encode_sampler_result(fake_job),
+            "fake_sub_ham": fake_sub_ham.tolist(),
         },
         "statevector": {
             "error": relerr(statevector_energy),
@@ -394,7 +395,7 @@ def measure_ground_state_energy_subspace_sampling(
         "system": {
             "ground_energy": ground_energy,
             "n_qubits": circuit.num_qubits,
-            "hamiltonian": hamiltonian,
+            "hamiltonian": hamiltonian.to_list(False),
             "ratio": ratio,
         },
     }
@@ -407,6 +408,16 @@ def measure_ground_state_energy_subspace_sampling(
             "bitstring_prop": real_bitstring_prop,
             "n_shots": n_shots,
             "job": encode_sampler_result(real_job),
+            "real_sub_ham": real_sub_ham.tolist(),
         }
 
     return var_dict
+
+
+def prep_nup_ndown_circ(n_up: int, n_down: int, n_qubits: int) -> QuantumCircuit:
+    circ = QuantumCircuit(n_qubits)
+    for ind_up in range(n_up):
+        circ.x(2 * ind_up)
+    for ind_down in range(n_down):
+        circ.x(2 * ind_down + 1)
+    return circ

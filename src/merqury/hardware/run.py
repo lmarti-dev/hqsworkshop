@@ -2,6 +2,7 @@ import numpy as np
 
 
 from merqury.utils.hardware import measure_ground_state_energy_subspace_sampling
+from merqury.utils.json_utils import save_json
 
 from merqury.algorithms.sweep import get_sweep_circuit
 from merqury.hamiltonians.pauliops import TFIM, get_min_gap, get_ground_energy
@@ -16,6 +17,7 @@ def compute_ground_energy_sweep(
     n_steps: int,
     n_shots: int,
     device_name: str = "garnet",
+    run_on_hardware: bool = False,
 ) -> dict:
 
     ground_energy = get_ground_energy(hamiltonian)
@@ -26,7 +28,7 @@ def compute_ground_energy_sweep(
         hamiltonian,
         ground_energy,
         sweep_circuit,
-        run_on_hardware=True,
+        run_on_hardware=run_on_hardware,
         device_name=device_name,
         n_shots=n_shots,
     )
@@ -45,4 +47,7 @@ if __name__ == "__main__":
 
     n_shots = 1000
 
-    energy_dict = compute_ground_energy_sweep(ham0, ham1, total_time, n_steps, n_shots)
+    energy_dict = compute_ground_energy_sweep(
+        ham0, ham1, total_time, n_steps, n_shots, run_on_hardware=False
+    )
+    save_json("10q_tfim_example", energy_dict)
