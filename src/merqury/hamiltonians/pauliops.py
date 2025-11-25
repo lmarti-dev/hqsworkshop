@@ -1,15 +1,23 @@
 from qiskit.quantum_info import SparsePauliOp
 import numpy as np
 from scipy.sparse.linalg import eigsh
+
 from pathlib import Path
 from merqury.utils.hardware import to_bitstring, index_bits
 from qiskit import QuantumCircuit
 
 
+def get_nth_bitstring_v2(hamiltonian: SparsePauliOp, nth: int = 0) -> str:
+    mat = hamiltonian.to_matrix(True).diagonal()
+    ind = int(np.argsort(mat)[nth])
+    bs = to_bitstring(ind, hamiltonian.num_qubits, True)
+    return bs
+
+
 def get_nth_bitstring(hamiltonian: SparsePauliOp, nth: int = 0) -> str:
     mat = hamiltonian.to_matrix(True)
-    _, ground_state = eigsh(mat, k=1, which="SA")
-    ind = np.sort(ground_state)[nth]
+    v, eigvecs = eigsh(mat, k=4, which="SA")
+    ind = int(np.argsort(-np.abs(eigvecs[:, nth]))[0])
     bs = to_bitstring(ind, hamiltonian.num_qubits, True)
     return bs
 
@@ -40,10 +48,10 @@ def load_ham(filename: Path) -> SparsePauliOp:
     return hamiltonian
 
 
-def get_ground_energy(hamiltonian: SparsePauliOp) -> float:
+def get_nth_energy(hamiltonian: SparsePauliOp, nth: int = 0) -> float:
     mat = hamiltonian.to_matrix(sparse=True)
-    ground_energy, _ = eigsh(mat, k=1, which="SA")
-    return ground_energy[0]
+    vals, _ = eigsh(mat, k=4, which="SA")
+    return vals[nth]
 
 
 def get_min_gap(hamiltonian: SparsePauliOp) -> float:

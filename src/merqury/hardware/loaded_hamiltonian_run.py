@@ -6,10 +6,11 @@ from merqury.utils.json_utils import save_json
 from merqury.algorithms.sweep import get_sweep_circuit
 from merqury.hamiltonians.pauliops import (
     get_min_gap,
-    get_ground_energy,
+    get_nth_energy,
     load_ham,
     get_diagonal_ham,
     get_nth_bitstring,
+    get_nth_bitstring_v2,
     prep_circ_bitstring,
     singlet_triplet_splitting,
     diagonalize_hamiltonian_splitting,
@@ -45,10 +46,12 @@ def compute_ground_energy_sweep(
 
     for nth in (0, 1):
 
+        print(f"==== nth: {nth} ====")
+
         ham1 = load_ham(filename)
 
         ham0 = get_diagonal_ham(ham1)
-        bitstring = get_nth_bitstring(ham0, nth)
+        bitstring = get_nth_bitstring_v2(ham0, nth)
         prep_circ = prep_circ_bitstring(bitstring)
 
         mult = 1
@@ -59,7 +62,7 @@ def compute_ground_energy_sweep(
 
         n_shots = 1000
 
-        ground_energy = get_ground_energy(ham1)
+        true_energy = get_nth_energy(ham1, nth)
         sweep_circuit = get_sweep_circuit(
             ham0, ham1, total_time=total_time, n_steps=n_steps
         )
@@ -67,7 +70,7 @@ def compute_ground_energy_sweep(
         prep_circ.compose(sweep_circuit, inplace=True)
         energy_dict = measure_ground_state_energy_subspace_sampling(
             ham1,
-            ground_energy,
+            true_energy,
             prep_circ,
             run_fake=run_fake,
             run_sv=run_sv,
@@ -80,7 +83,10 @@ def compute_ground_energy_sweep(
     splits = {}
     for k in d_out[0].keys():
         if "energy" in d_out[0][k].keys() and "energy" in d_out[1][k].keys():
-            splits[k] = compute_splittings_e(d_out[1]["energy"], d_out[0]["energy"])
+            splits[k] = compute_splittings_e(
+                d_out[1][k]["energy"], d_out[0][k]["energy"]
+            )
+            print(f"Splitting: {splits[k]:.5e} for {k}")
 
     for k in splits:
         energy_dict[k]["splitting"] = splits[k]

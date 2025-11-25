@@ -5,7 +5,7 @@ from merqury.utils.hardware import measure_ground_state_energy_subspace_sampling
 from merqury.utils.json_utils import save_json
 
 from merqury.algorithms.sweep import get_sweep_circuit
-from merqury.hamiltonians.pauliops import TFIM, get_min_gap, get_ground_energy
+from merqury.hamiltonians.pauliops import TFIM, get_min_gap, get_nth_energy
 
 from qiskit.quantum_info import SparsePauliOp
 
@@ -40,7 +40,7 @@ def compute_ground_energy_sweep(
 
 if __name__ == "__main__":
     ham0, ham1 = TFIM(10, 1, 1, split_parts=True)
-    ground_energy = get_ground_energy(ham1)
+    ground_energy = get_nth_energy(ham1)
 
     mult = 1
 
