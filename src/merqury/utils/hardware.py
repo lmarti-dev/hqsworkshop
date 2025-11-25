@@ -9,7 +9,7 @@ from iqm.qiskit_iqm.fake_backends.fake_garnet import IQMFakeGarnet
 from iqm.qiskit_iqm.fake_backends.fake_aphrodite import IQMFakeAphrodite
 from iqm.qiskit_iqm.fake_backends.fake_adonis import IQMFakeAdonis
 from iqm.qiskit_iqm.fake_backends.iqm_fake_backend import IQMFakeBackend
-from iqm.qiskit_iqm import IQMProvider, IQMBackend
+from iqm.qiskit_iqm import IQMProvider, IQMBackend, IQMJob
 
 
 from qiskit import transpile
@@ -48,7 +48,7 @@ def get_counts_from_job(job: Union[RuntimeJobV2, PrimitiveJob], ind: int = 0) ->
             counts = {k: int(qd[k] * n_shots) for k in qd.keys()}
         except AttributeError:
             counts = res[ind].join_data().get_counts()
-    elif isinstance(job, AerJob):
+    elif isinstance(job, (AerJob, IQMJob)):
         counts = job.result().get_counts(ind)
     else:
         raise ValueError(f"Unexpected job type: type {type(job)}")
@@ -235,7 +235,7 @@ def backend_sample(
         )
         payload = circuits_to_payload(backend, circuit, parameters, None)
         sampler = SamplerV2(mode=backend)
-        job = sampler.run([isa_circuits], shots=n_shots)
+        job = backend.run(isa_circuits, shots=n_shots)
     else:
         raise ValueError(f"Unexpected backend: type {type(backend)}")
     return job

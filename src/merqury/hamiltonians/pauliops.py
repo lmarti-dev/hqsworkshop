@@ -1,6 +1,13 @@
 from qiskit.quantum_info import SparsePauliOp
 import numpy as np
 from scipy.sparse.linalg import eigsh
+from pathlib import Path
+
+
+def load_ham(fpath: Path) -> SparsePauliOp:
+    with open(Path(fpath), "rb") as fd:
+        hamiltonian = SparsePauliOp.from_list(np.load(fd))
+    return hamiltonian
 
 
 def get_ground_energy(hamiltonian: SparsePauliOp) -> float:
