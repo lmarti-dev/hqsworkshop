@@ -2,6 +2,7 @@ import numpy as np
 
 
 from merqury.utils.hardware import measure_ground_state_energy_subspace_sampling
+
 from merqury.algorithms.sweep import get_sweep_circuit
 from merqury.hamiltonians.pauliops import TFIM, get_min_gap, get_ground_energy
 
@@ -34,7 +35,7 @@ def compute_ground_energy_sweep(
 
 
 if __name__ == "__main__":
-    ham0, ham1 = TFIM(5, 1, 1, split_parts=True)
+    ham0, ham1 = TFIM(10, 1, 1, split_parts=True)
 
     mult = 1
 
@@ -45,5 +46,3 @@ if __name__ == "__main__":
     n_shots = 1000
 
     energy_dict = compute_ground_energy_sweep(ham0, ham1, total_time, n_steps, n_shots)
-
-    print(energy_dict)
