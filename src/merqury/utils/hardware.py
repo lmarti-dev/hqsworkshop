@@ -11,6 +11,9 @@ from iqm.qiskit_iqm.fake_backends.fake_adonis import IQMFakeAdonis
 from iqm.qiskit_iqm.fake_backends.iqm_fake_backend import IQMFakeBackend
 from iqm.qiskit_iqm import IQMProvider, IQMBackend
 
+
+from qiskit import transpile
+
 import io
 
 
@@ -30,6 +33,9 @@ from qiskit.circuit.parametertable import ParameterView
 from qiskit.primitives import StatevectorSampler, PrimitiveJob, StatevectorEstimator
 
 
+from qiskit_aer import AerJob
+
+
 def get_counts_from_job(job: Union[RuntimeJobV2, PrimitiveJob], ind: int = 0) -> dict:
     if isinstance(job, RuntimeJobV2):
         key = list(job.result()[ind].data.keys())[0]
@@ -42,7 +48,7 @@ def get_counts_from_job(job: Union[RuntimeJobV2, PrimitiveJob], ind: int = 0) ->
             counts = {k: int(qd[k] * n_shots) for k in qd.keys()}
         except AttributeError:
             counts = res[ind].join_data().get_counts()
-    elif isinstance(job, MQPJob):
+    elif isinstance(job, AerJob):
         counts = job.result().get_counts(ind)
     else:
         raise ValueError(f"Unexpected job type: type {type(job)}")
@@ -218,9 +224,18 @@ def backend_sample(
 
     elif isinstance(backend, (IQMFakeBackend, IQMBackend)):
         circuit = circuit.assign_parameters(parameters_dict(circuit, parameters))
-        pm = generate_preset_pass_manager(backend=backend, optimization_level=3)
-        isa_circuit = pm.run(circuit)
-        job = backend.run(isa_circuit, shots=n_shots)
+
+        initial_layout = list(range(circuit.num_qubits))
+        isa_circuits = transpile(
+            circuit,
+            backend=backend,
+            initial_layout=initial_layout,
+            optimization_level=1,
+            coupling_map=backend.coupling_map,
+        )
+        payload = circuits_to_payload(backend, circuit, parameters, None)
+        sampler = SamplerV2(mode=backend)
+        job = sampler.run([isa_circuits], shots=n_shots)
     else:
         raise ValueError(f"Unexpected backend: type {type(backend)}")
     return job
