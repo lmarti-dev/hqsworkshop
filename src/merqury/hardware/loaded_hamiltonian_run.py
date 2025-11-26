@@ -137,7 +137,7 @@ def compute_ground_energy_sweep(
         sweep_circuit = get_sweep_circuit(
             ham0, ham1, total_time=total_time, n_steps=n_steps
         )
-
+        print("sweep circuit ready")
         prep_circ.compose(sweep_circuit, inplace=True)
         energy_dict = measure_ground_state_energy_subspace_sampling(
             ham1,
@@ -207,7 +207,6 @@ if __name__ == "__main__":
     for filename in filenames:
 
         if not out_exists(filename):
-
             if get_n_qubits(filename) < 14:
                 solve_ham = True
                 run_sv = True
@@ -225,7 +224,8 @@ if __name__ == "__main__":
                 run_fake=run_fake,
                 run_sv=run_sv,
                 solve_ham=solve_ham,
-                n_shots=10000,
+                n_shots=1000,
+                device_name="emerald",
             )
 
             save_json(Path(filename).stem + ".json", d_out)

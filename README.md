@@ -13,4 +13,4 @@ One can run `uv pip install .` to install the package and the dependencies.
 ![alt text](src/merqury/plots/main.png)
 
 
-real_backend was done on the Garnet IQM device, with $n=10000$ shots. fake_backend was also provided by IQM, and emulates noise. For $N_q > 14$, only the quantum computer was used.
+real_backend was done on the Garnet and Emerald IQM device, with $n=10000$ shots for $N_q<18$, $n=1000$ otherwise. fake_backend was also provided by IQM, and emulates noise. For $N_q > 14$, only the quantum computer was used.

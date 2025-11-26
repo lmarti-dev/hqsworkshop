@@ -193,6 +193,7 @@ def subspace_diagonalize(
     sub_ham = np.zeros((n_samples, n_samples), dtype=complex)
     for x in range(n_samples):
         for y in range(x, len(unique_bitstrings)):
+            print(x, y, end="\r")
             ind_x = ind_list[x]
             ind_y = ind_list[y]
             sub_ham[x, y] = sparse_ham[ind_x, ind_y]
@@ -385,11 +386,14 @@ def measure_ground_state_energy_subspace_sampling(
             n_shots=n_shots,
         )
         real_counts = get_counts_from_job(real_job)
+        print("got counts")
         real_unique_bitstring = get_unique_bitstrings(real_counts)
+        print("got bitstrings")
         real_bitstring_prop = len(real_unique_bitstring) / (2**circuit.num_qubits)
         real_backend_energy, real_sub_ham = subspace_diagonalize(
             unique_bitstrings=real_unique_bitstring, ham=hamiltonian
         )
+        print("finished diagonalizing")
 
         print(
             f"RealBackend ({real_backend.name}) {relerr(real_backend_energy):.5e} sub. mat.: {len(real_unique_bitstring)} × {len(real_unique_bitstring)}: {real_bitstring_prop*100:.3f}%"
