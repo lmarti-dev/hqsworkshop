@@ -1,0 +1,597 @@
+{
+    "0": {
+        "fake_backend": {
+            "name": "IQMFakeGarnetBackend",
+            "error": 1.1118234444222574e-15,
+            "energy": -0.9985605450171688,
+            "bitstring_prop": 1.0,
+            "n_shots": 10000
+        },
+        "statevector": {
+            "error": 1.2830048928264757,
+            "energy": 0.2825975200233312
+        },
+        "system": {
+            "ground_energy": -0.99856054501717,
+            "n_qubits": 6,
+            "hamiltonian": {
+                "__type__": "settings",
+                "__module__": "qiskit.quantum_info.operators.symplectic.sparse_pauli_op",
+                "__class__": "SparsePauliOp",
+                "__value__": {
+                    "data": {
+                        "__type__": "settings",
+                        "__module__": "qiskit.quantum_info.operators.symplectic.pauli_list",
+                        "__class__": "PauliList",
+                        "__value__": {
+                            "data": [
+                                "IIIIII",
+                                "IIIIIZ",
+                                "IIIIZI",
+                                "IIIIZZ",
+                                "IIIIXZ",
+                                "IIIIZX",
+                                "IIIIYY",
+                                "IIIZII",
+                                "IIZIII",
+                                "IZIIII",
+                                "ZIIIII",
+                                "IIIXII",
+                                "IIIXZI",
+                                "IIIXZZ",
+                                "IIIXZX",
+                                "IIIXYY",
+                                "IIXIII",
+                                "IIXIZI",
+                                "IIXIZZ",
+                                "IIXIZX",
+                                "IIXIYY",
+                                "IXIIII",
+                                "IXIIZI",
+                                "IXIIZZ",
+                                "IXIIZX",
+                                "IXIIYY",
+                                "XIIIII",
+                                "XIIIZI",
+                                "XIIIZZ",
+                                "XIIIZX",
+                                "XIIIYY"
+                            ]
+                        }
+                    },
+                    "coeffs": {
+                        "type": "ndarray",
+                        "args": [
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 1.0393625916370246,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 0.0019053422665352149,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -0.09033229104278073,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -0.09033229104278073,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 0.06556734720518254,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 4.719878526436085e-10,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 4.719878526436085e-10,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 0.10139374496792306,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 0.697496587826189,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 0.8448398501885329,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 0.20199273250411662,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 4.875449603114513e-09,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -7.092380166559483e-10,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -7.092380166559483e-10,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 1.2236627854721485e-06,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 1.2236627854721485e-06,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -5.5140026380448535e-09,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -2.421430907411334e-10,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -2.421430907411334e-10,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -0.03174214117313588,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -0.03174214117313588,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -3.467950490429965e-08,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -2.4187620945616302e-09,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -2.4187620945616302e-09,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -0.030603605685518447,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -0.030603605685518447,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 7.605688906350319e-09,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 2.1779891251273713e-09,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 2.1779891251273713e-09,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -0.014958953131941963,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -0.014958953131941963,
+                                    "imag": 0.0
+                                }
+                            }
+                        ],
+                        "kwargs": {
+                            "dtype": "complex128"
+                        }
+                    }
+                }
+            }
+        },
+        "real_backend": {
+            "name": "IQM Backend",
+            "error": 1.1118234444222574e-15,
+            "energy": -0.9985605450171688,
+            "bitstring_prop": 1.0,
+            "n_shots": 10000
+        }
+    },
+    "1": {
+        "fake_backend": {
+            "name": "IQMFakeGarnetBackend",
+            "error": 0.14273611753534146,
+            "energy": -0.9985605450171688,
+            "bitstring_prop": 1.0,
+            "n_shots": 10000,
+            "splitting": 3.394010755984708
+        },
+        "statevector": {
+            "error": 0.5683801961266917,
+            "energy": -0.37716363382782886
+        },
+        "system": {
+            "ground_energy": -0.8738330133214559,
+            "n_qubits": 6,
+            "hamiltonian": {
+                "__type__": "settings",
+                "__module__": "qiskit.quantum_info.operators.symplectic.sparse_pauli_op",
+                "__class__": "SparsePauliOp",
+                "__value__": {
+                    "data": {
+                        "__type__": "settings",
+                        "__module__": "qiskit.quantum_info.operators.symplectic.pauli_list",
+                        "__class__": "PauliList",
+                        "__value__": {
+                            "data": [
+                                "IIIIII",
+                                "IIIIIZ",
+                                "IIIIZI",
+                                "IIIIZZ",
+                                "IIIIXZ",
+                                "IIIIZX",
+                                "IIIIYY",
+                                "IIIZII",
+                                "IIZIII",
+                                "IZIIII",
+                                "ZIIIII",
+                                "IIIXII",
+                                "IIIXZI",
+                                "IIIXZZ",
+                                "IIIXZX",
+                                "IIIXYY",
+                                "IIXIII",
+                                "IIXIZI",
+                                "IIXIZZ",
+                                "IIXIZX",
+                                "IIXIYY",
+                                "IXIIII",
+                                "IXIIZI",
+                                "IXIIZZ",
+                                "IXIIZX",
+                                "IXIIYY",
+                                "XIIIII",
+                                "XIIIZI",
+                                "XIIIZZ",
+                                "XIIIZX",
+                                "XIIIYY"
+                            ]
+                        }
+                    },
+                    "coeffs": {
+                        "type": "ndarray",
+                        "args": [
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 1.0393625916370246,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 0.0019053422665352149,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -0.09033229104278073,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -0.09033229104278073,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 0.06556734720518254,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 4.719878526436085e-10,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 4.719878526436085e-10,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 0.10139374496792306,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 0.697496587826189,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 0.8448398501885329,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 0.20199273250411662,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 4.875449603114513e-09,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -7.092380166559483e-10,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -7.092380166559483e-10,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 1.2236627854721485e-06,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 1.2236627854721485e-06,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -5.5140026380448535e-09,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -2.421430907411334e-10,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -2.421430907411334e-10,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -0.03174214117313588,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -0.03174214117313588,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -3.467950490429965e-08,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -2.4187620945616302e-09,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -2.4187620945616302e-09,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -0.030603605685518447,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -0.030603605685518447,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 7.605688906350319e-09,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 2.1779891251273713e-09,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 2.1779891251273713e-09,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -0.014958953131941963,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -0.014958953131941963,
+                                    "imag": 0.0
+                                }
+                            }
+                        ],
+                        "kwargs": {
+                            "dtype": "complex128"
+                        }
+                    }
+                }
+            },
+            "splitting": 3.3940107559846897
+        },
+        "real_backend": {
+            "name": "IQM Backend",
+            "error": 0.14273611753534146,
+            "energy": -0.9985605450171688,
+            "bitstring_prop": 1.0,
+            "n_shots": 10000,
+            "splitting": 3.3940107559846355
+        }
+    }
+}
