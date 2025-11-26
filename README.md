@@ -6,7 +6,7 @@ The main script is in `src/merqury/hardware/loaded_hamiltonian_run.py`
 
 One can plot the results in `src/merqury/utils/plots.py`
 
-One can run `uv install .` to install the package and the dependencies.
+One can run `uv pip install .` to install the package and the dependencies.
 
 # Main results
 
