@@ -5,3 +5,5 @@ This repo implements an adiabatic sweep + subspace diagonalization method to com
 The main script is in `src/merqury/hardware/loaded_hamiltonian_run.py`
 
 One can plot the results in `src/merqury/utils/plots.py`
+
+One can run `uv install .` to install the package and the dependencies.

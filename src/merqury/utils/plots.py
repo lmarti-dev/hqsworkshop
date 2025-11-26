@@ -20,6 +20,8 @@ def get_backend_splits(d: dict, backend: str):
 
     for ind, k in enumerate(sorted(d.keys())):
         print(k, d[k].keys())
+        if not backend in d[k]["1"].keys():
+            break
         subd = d[k]["1"][backend]
         if "splitting" not in subd.keys():
             break
@@ -42,6 +44,7 @@ mark = "xosd"
 for ind, b in enumerate(BACKENDS):
     x, y = get_backend_splits(d, b)
     ax.plot(x, y, f"{mark[ind]}-", label=b)
+
 
 ax.legend()
 

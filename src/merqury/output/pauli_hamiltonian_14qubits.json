@@ -1,0 +1,1341 @@
+{
+    "0": {
+        "system": {
+            "ground_energy": 1000,
+            "n_qubits": 14,
+            "hamiltonian": {
+                "__type__": "settings",
+                "__module__": "qiskit.quantum_info.operators.symplectic.sparse_pauli_op",
+                "__class__": "SparsePauliOp",
+                "__value__": {
+                    "data": {
+                        "__type__": "settings",
+                        "__module__": "qiskit.quantum_info.operators.symplectic.pauli_list",
+                        "__class__": "PauliList",
+                        "__value__": {
+                            "data": [
+                                "IIIIIIIIIIIIII",
+                                "IIIIIIIIIIIIIZ",
+                                "IIIIIIIIIIIIZI",
+                                "IIIIIIIIIIIIZZ",
+                                "IIIIIIIIIIIIXZ",
+                                "IIIIIIIIIIIIZX",
+                                "IIIIIIIIIIIIYY",
+                                "IIIIIIIIIIIZII",
+                                "IIIIIIIIIIZIII",
+                                "IIIIIIIIIZIIII",
+                                "IIIIIIIIZIIIII",
+                                "IIIIIIIZIIIIII",
+                                "IIIIIIZIIIIIII",
+                                "IIIIIZIIIIIIII",
+                                "IIIIZIIIIIIIII",
+                                "IIIZIIIIIIIIII",
+                                "IIZIIIIIIIIIII",
+                                "IZIIIIIIIIIIII",
+                                "ZIIIIIIIIIIIII",
+                                "IIIIIIIIIIIXII",
+                                "IIIIIIIIIIIXZI",
+                                "IIIIIIIIIIIXZZ",
+                                "IIIIIIIIIIIXZX",
+                                "IIIIIIIIIIIXYY",
+                                "IIIIIIIIIIXIII",
+                                "IIIIIIIIIIXIZI",
+                                "IIIIIIIIIIXIZZ",
+                                "IIIIIIIIIIXIZX",
+                                "IIIIIIIIIIXIYY",
+                                "IIIIIIIIIXIIII",
+                                "IIIIIIIIIXIIZI",
+                                "IIIIIIIIIXIIZZ",
+                                "IIIIIIIIIXIIZX",
+                                "IIIIIIIIIXIIYY",
+                                "IIIIIIIIXIIIII",
+                                "IIIIIIIIXIIIZI",
+                                "IIIIIIIIXIIIZZ",
+                                "IIIIIIIIXIIIZX",
+                                "IIIIIIIIXIIIYY",
+                                "IIIIIIIXIIIIII",
+                                "IIIIIIIXIIIIZI",
+                                "IIIIIIIXIIIIZZ",
+                                "IIIIIIIXIIIIZX",
+                                "IIIIIIIXIIIIYY",
+                                "IIIIIIXIIIIIII",
+                                "IIIIIIXIIIIIZI",
+                                "IIIIIIXIIIIIZZ",
+                                "IIIIIIXIIIIIZX",
+                                "IIIIIIXIIIIIYY",
+                                "IIIIIXIIIIIIII",
+                                "IIIIIXIIIIIIZI",
+                                "IIIIIXIIIIIIZZ",
+                                "IIIIIXIIIIIIZX",
+                                "IIIIIXIIIIIIYY",
+                                "IIIIXIIIIIIIII",
+                                "IIIIXIIIIIIIZI",
+                                "IIIIXIIIIIIIZZ",
+                                "IIIIXIIIIIIIZX",
+                                "IIIIXIIIIIIIYY",
+                                "IIIXIIIIIIIIII",
+                                "IIIXIIIIIIIIZI",
+                                "IIIXIIIIIIIIZZ",
+                                "IIIXIIIIIIIIZX",
+                                "IIIXIIIIIIIIYY",
+                                "IIXIIIIIIIIIII",
+                                "IIXIIIIIIIIIZI",
+                                "IIXIIIIIIIIIZZ",
+                                "IIXIIIIIIIIIZX",
+                                "IIXIIIIIIIIIYY",
+                                "IXIIIIIIIIIIII",
+                                "IXIIIIIIIIIIZI",
+                                "IXIIIIIIIIIIZZ",
+                                "IXIIIIIIIIIIZX",
+                                "IXIIIIIIIIIIYY",
+                                "XIIIIIIIIIIIII",
+                                "XIIIIIIIIIIIZI",
+                                "XIIIIIIIIIIIZZ",
+                                "XIIIIIIIIIIIZX",
+                                "XIIIIIIIIIIIYY"
+                            ]
+                        }
+                    },
+                    "coeffs": {
+                        "type": "ndarray",
+                        "args": [
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 6.988993950355918,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 0.0019053422665353537,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -0.09033229104277904,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -0.09033229104277904,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 0.07118662975794009,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 5.32654441761353e-09,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 5.32654441761353e-09,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 0.10139374496792306,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 0.697496587826189,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 0.8448398501885329,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 0.20199273250411662,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 0.2542370992007648,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 0.9112626717866956,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 0.9049455285538156,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 1.1219436290551599,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 1.010201856728607,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 0.3114129558410333,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 0.9553737215005084,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 0.48025389605228036,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 4.875449603114513e-09,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -7.092380166559483e-10,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -7.092380166559483e-10,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 1.2236627854721485e-06,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 1.2236627854721485e-06,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -5.5140026380448535e-09,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -2.421430907411334e-10,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -2.421430907411334e-10,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -0.03174214117313588,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -0.03174214117313588,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -3.467950490429965e-08,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -2.4187620945616302e-09,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -2.4187620945616302e-09,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -0.030603605685518447,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -0.030603605685518447,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 7.605688906350319e-09,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 2.1779891251273713e-09,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 2.1779891251273713e-09,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -0.014958953131941963,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -0.014958953131941963,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -1.4788269177144902e-08,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 5.329537749501403e-10,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 5.329537749501403e-10,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -0.014231327005402876,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -0.014231327005402876,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -1.9124952444393737e-07,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -4.972254698831604e-09,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -4.972254698831604e-09,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -0.02610518887937773,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -0.02610518887937773,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 5.724924255820504e-08,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 5.6064194686506774e-09,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 5.6064194686506774e-09,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -0.0259948454431507,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -0.0259948454431507,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -2.2417867509831735e-08,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -6.481240349764131e-09,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -6.481240349764131e-09,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 0.027870872497898335,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 0.027870872497898335,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 6.155438679865435e-08,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 2.045760665402311e-09,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 2.045760665402311e-09,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 0.02638827045472779,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 0.02638827045472779,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 2.0468719434193773e-08,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -8.080228113488456e-10,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -8.080228113488456e-10,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 0.014515475818523242,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 0.014515475818523242,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 7.853843412558092e-08,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 1.7707356943429282e-09,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 1.7707356943429282e-09,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 0.02485220075259454,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 0.02485220075259454,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 2.772638296643631e-08,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -2.807201026730005e-10,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -2.807201026730005e-10,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 0.017302492004897724,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 0.017302492004897724,
+                                    "imag": 0.0
+                                }
+                            }
+                        ],
+                        "kwargs": {
+                            "dtype": "complex128"
+                        }
+                    }
+                }
+            }
+        },
+        "real_backend": {
+            "name": "IQM Backend",
+            "error": 1.0006237903994977,
+            "energy": -0.6237903994976222,
+            "bitstring_prop": 0.38812255859375,
+            "n_shots": 10000
+        }
+    },
+    "1": {
+        "system": {
+            "ground_energy": 1000,
+            "n_qubits": 14,
+            "hamiltonian": {
+                "__type__": "settings",
+                "__module__": "qiskit.quantum_info.operators.symplectic.sparse_pauli_op",
+                "__class__": "SparsePauliOp",
+                "__value__": {
+                    "data": {
+                        "__type__": "settings",
+                        "__module__": "qiskit.quantum_info.operators.symplectic.pauli_list",
+                        "__class__": "PauliList",
+                        "__value__": {
+                            "data": [
+                                "IIIIIIIIIIIIII",
+                                "IIIIIIIIIIIIIZ",
+                                "IIIIIIIIIIIIZI",
+                                "IIIIIIIIIIIIZZ",
+                                "IIIIIIIIIIIIXZ",
+                                "IIIIIIIIIIIIZX",
+                                "IIIIIIIIIIIIYY",
+                                "IIIIIIIIIIIZII",
+                                "IIIIIIIIIIZIII",
+                                "IIIIIIIIIZIIII",
+                                "IIIIIIIIZIIIII",
+                                "IIIIIIIZIIIIII",
+                                "IIIIIIZIIIIIII",
+                                "IIIIIZIIIIIIII",
+                                "IIIIZIIIIIIIII",
+                                "IIIZIIIIIIIIII",
+                                "IIZIIIIIIIIIII",
+                                "IZIIIIIIIIIIII",
+                                "ZIIIIIIIIIIIII",
+                                "IIIIIIIIIIIXII",
+                                "IIIIIIIIIIIXZI",
+                                "IIIIIIIIIIIXZZ",
+                                "IIIIIIIIIIIXZX",
+                                "IIIIIIIIIIIXYY",
+                                "IIIIIIIIIIXIII",
+                                "IIIIIIIIIIXIZI",
+                                "IIIIIIIIIIXIZZ",
+                                "IIIIIIIIIIXIZX",
+                                "IIIIIIIIIIXIYY",
+                                "IIIIIIIIIXIIII",
+                                "IIIIIIIIIXIIZI",
+                                "IIIIIIIIIXIIZZ",
+                                "IIIIIIIIIXIIZX",
+                                "IIIIIIIIIXIIYY",
+                                "IIIIIIIIXIIIII",
+                                "IIIIIIIIXIIIZI",
+                                "IIIIIIIIXIIIZZ",
+                                "IIIIIIIIXIIIZX",
+                                "IIIIIIIIXIIIYY",
+                                "IIIIIIIXIIIIII",
+                                "IIIIIIIXIIIIZI",
+                                "IIIIIIIXIIIIZZ",
+                                "IIIIIIIXIIIIZX",
+                                "IIIIIIIXIIIIYY",
+                                "IIIIIIXIIIIIII",
+                                "IIIIIIXIIIIIZI",
+                                "IIIIIIXIIIIIZZ",
+                                "IIIIIIXIIIIIZX",
+                                "IIIIIIXIIIIIYY",
+                                "IIIIIXIIIIIIII",
+                                "IIIIIXIIIIIIZI",
+                                "IIIIIXIIIIIIZZ",
+                                "IIIIIXIIIIIIZX",
+                                "IIIIIXIIIIIIYY",
+                                "IIIIXIIIIIIIII",
+                                "IIIIXIIIIIIIZI",
+                                "IIIIXIIIIIIIZZ",
+                                "IIIIXIIIIIIIZX",
+                                "IIIIXIIIIIIIYY",
+                                "IIIXIIIIIIIIII",
+                                "IIIXIIIIIIIIZI",
+                                "IIIXIIIIIIIIZZ",
+                                "IIIXIIIIIIIIZX",
+                                "IIIXIIIIIIIIYY",
+                                "IIXIIIIIIIIIII",
+                                "IIXIIIIIIIIIZI",
+                                "IIXIIIIIIIIIZZ",
+                                "IIXIIIIIIIIIZX",
+                                "IIXIIIIIIIIIYY",
+                                "IXIIIIIIIIIIII",
+                                "IXIIIIIIIIIIZI",
+                                "IXIIIIIIIIIIZZ",
+                                "IXIIIIIIIIIIZX",
+                                "IXIIIIIIIIIIYY",
+                                "XIIIIIIIIIIIII",
+                                "XIIIIIIIIIIIZI",
+                                "XIIIIIIIIIIIZZ",
+                                "XIIIIIIIIIIIZX",
+                                "XIIIIIIIIIIIYY"
+                            ]
+                        }
+                    },
+                    "coeffs": {
+                        "type": "ndarray",
+                        "args": [
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 6.988993950355918,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 0.0019053422665353537,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -0.09033229104277904,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -0.09033229104277904,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 0.07118662975794009,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 5.32654441761353e-09,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 5.32654441761353e-09,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 0.10139374496792306,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 0.697496587826189,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 0.8448398501885329,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 0.20199273250411662,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 0.2542370992007648,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 0.9112626717866956,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 0.9049455285538156,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 1.1219436290551599,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 1.010201856728607,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 0.3114129558410333,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 0.9553737215005084,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 0.48025389605228036,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 4.875449603114513e-09,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -7.092380166559483e-10,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -7.092380166559483e-10,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 1.2236627854721485e-06,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 1.2236627854721485e-06,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -5.5140026380448535e-09,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -2.421430907411334e-10,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -2.421430907411334e-10,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -0.03174214117313588,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -0.03174214117313588,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -3.467950490429965e-08,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -2.4187620945616302e-09,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -2.4187620945616302e-09,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -0.030603605685518447,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -0.030603605685518447,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 7.605688906350319e-09,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 2.1779891251273713e-09,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 2.1779891251273713e-09,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -0.014958953131941963,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -0.014958953131941963,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -1.4788269177144902e-08,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 5.329537749501403e-10,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 5.329537749501403e-10,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -0.014231327005402876,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -0.014231327005402876,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -1.9124952444393737e-07,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -4.972254698831604e-09,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -4.972254698831604e-09,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -0.02610518887937773,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -0.02610518887937773,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 5.724924255820504e-08,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 5.6064194686506774e-09,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 5.6064194686506774e-09,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -0.0259948454431507,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -0.0259948454431507,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -2.2417867509831735e-08,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -6.481240349764131e-09,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -6.481240349764131e-09,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 0.027870872497898335,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 0.027870872497898335,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 6.155438679865435e-08,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 2.045760665402311e-09,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 2.045760665402311e-09,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 0.02638827045472779,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 0.02638827045472779,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 2.0468719434193773e-08,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -8.080228113488456e-10,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -8.080228113488456e-10,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 0.014515475818523242,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 0.014515475818523242,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 7.853843412558092e-08,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 1.7707356943429282e-09,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 1.7707356943429282e-09,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 0.02485220075259454,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 0.02485220075259454,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 2.772638296643631e-08,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -2.807201026730005e-10,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": -2.807201026730005e-10,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 0.017302492004897724,
+                                    "imag": 0.0
+                                }
+                            },
+                            {
+                                "type": "complex",
+                                "kwargs": {
+                                    "real": 0.017302492004897724,
+                                    "imag": 0.0
+                                }
+                            }
+                        ],
+                        "kwargs": {
+                            "dtype": "complex128"
+                        }
+                    }
+                }
+            }
+        },
+        "real_backend": {
+            "name": "IQM Backend",
+            "error": 1.0006075839581812,
+            "energy": -0.607583958181074,
+            "bitstring_prop": 0.3431396484375,
+            "n_shots": 10000,
+            "splitting": 0.39276488304518836
+        }
+    }
+}
