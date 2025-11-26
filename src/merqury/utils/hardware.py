@@ -337,7 +337,7 @@ def sv_estimate_observables(
 
 def measure_ground_state_energy_subspace_sampling(
     hamiltonian: SparsePauliOp,
-    ground_energy: float,
+    target_energy: float,
     circuit: QuantumCircuit,
     device_name: str,
     n_shots: int = 1e3,
@@ -351,7 +351,7 @@ def measure_ground_state_energy_subspace_sampling(
     circuit_to_sample = add_meas_layer(circuit)
 
     def relerr(e):
-        return np.abs(e - ground_energy) / np.abs(ground_energy)
+        return np.abs(e - target_energy) / np.abs(target_energy)
 
     if run_fake:
         fake_backend = get_appropriate_fake_backend(circuit.num_qubits)
@@ -374,6 +374,7 @@ def measure_ground_state_energy_subspace_sampling(
         statevector_energy = sv_estimate_observables(
             circuit=circuit, observables=[hamiltonian], param_sweep=[]
         ).data.evs[0]
+        print(f"Statevector {relerr(statevector_energy):.5e}")
 
     if run_on_hardware:
         real_backend = get_backend(device_name)
@@ -394,7 +395,6 @@ def measure_ground_state_energy_subspace_sampling(
             f"RealBackend ({real_backend.name}) {relerr(real_backend_energy):.5e} sub. mat.: {len(real_unique_bitstring)} × {len(real_unique_bitstring)}: {real_bitstring_prop*100:.3f}%"
         )
 
-    print(f"Statevector {relerr(statevector_energy):.5e}")
     var_dict = {}
     if run_fake:
         print(
@@ -408,7 +408,6 @@ def measure_ground_state_energy_subspace_sampling(
             "unique_bitstrings": fake_unique_bitstring,
             "bitstring_prop": fake_backend_bitstring_prop,
             "n_shots": n_shots,
-            "job": encode_sampler_result(fake_job),
             "sub_ham": fake_sub_ham,
         }
 
@@ -418,7 +417,7 @@ def measure_ground_state_energy_subspace_sampling(
             "energy": statevector_energy,
         }
     var_dict["system"] = {
-        "ground_energy": ground_energy,
+        "ground_energy": target_energy,
         "n_qubits": circuit.num_qubits,
         "hamiltonian": hamiltonian,
     }
@@ -430,7 +429,6 @@ def measure_ground_state_energy_subspace_sampling(
             "unique_bitstrings": real_unique_bitstring,
             "bitstring_prop": real_bitstring_prop,
             "n_shots": n_shots,
-            "job": encode_sampler_result(real_job),
             "sub_ham": real_sub_ham,
         }
 

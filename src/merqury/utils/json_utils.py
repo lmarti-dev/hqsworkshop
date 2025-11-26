@@ -180,3 +180,11 @@ def save_json(filename: Path, jobj: dict) -> None:
     dirname = Path(Path(__file__).parent, "../output")
     with io.open(Path(dirname, filename), "w+", encoding="utf8") as f:
         f.write(json.dumps(jobj, ensure_ascii=False, indent=4, cls=ExtendedJSONEncoder))
+
+
+def load_json(filename: Path) -> dict:
+    dirname = Path(Path(__file__).parent, "../output")
+    with io.open(Path(dirname, filename), "r", encoding="utf8") as f:
+        jobj = json.loads(f.read(), cls=ExtendedJSONDecoder)
+
+    return jobj

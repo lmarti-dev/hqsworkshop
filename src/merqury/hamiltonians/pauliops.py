@@ -7,10 +7,12 @@ from merqury.utils.hardware import to_bitstring, index_bits
 from qiskit import QuantumCircuit
 
 
-def get_nth_bitstring_v2(hamiltonian: SparsePauliOp, nth: int = 0) -> str:
+def get_nth_bitstring_v2(
+    hamiltonian: SparsePauliOp, nth: int = 0, left_to_right: bool = True
+) -> str:
     mat = hamiltonian.to_matrix(True).diagonal()
     ind = int(np.argsort(mat)[nth])
-    bs = to_bitstring(ind, hamiltonian.num_qubits, True)
+    bs = to_bitstring(ind, hamiltonian.num_qubits, left_to_right)
     return bs
 
 
@@ -28,6 +30,17 @@ def prep_circ_bitstring(bs: str) -> QuantumCircuit:
     for ind in inds:
         circ.x(ind)
     return circ
+
+
+def kill_diagonal(hamiltonian: SparsePauliOp) -> SparsePauliOp:
+    out = []
+    for term in hamiltonian:
+        s = str(term.paulis[0])
+        if ["I"] == list(set(s)):
+            pass
+        else:
+            out.append(term)
+    return sum(out)
 
 
 def get_diagonal_ham(hamiltonian: SparsePauliOp) -> SparsePauliOp:
