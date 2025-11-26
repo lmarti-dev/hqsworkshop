@@ -7,3 +7,10 @@ The main script is in `src/merqury/hardware/loaded_hamiltonian_run.py`
 One can plot the results in `src/merqury/utils/plots.py`
 
 One can run `uv install .` to install the package and the dependencies.
+
+# Main results
+
+![alt text](src/merqury/plots/main.png)
+
+
+real_backend was done on the Garnet IQM device, with $n=10000$ shots. fake_backend was also provided by IQM, and emulates noise. For $N_q > 14$, only the quantum computer was used.
