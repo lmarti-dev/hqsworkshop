@@ -1,5 +1,3 @@
-import json
-import io
 from merqury.utils.json_utils import load_json
 import os
 from pathlib import Path
@@ -50,5 +48,7 @@ ax.legend()
 
 ax.set_ylabel("Energy splitting")
 ax.set_xlabel("Qubits")
+
+plt.savefig(Path(Path(__file__).parent, "../plots/main.png"))
 
 plt.show()
