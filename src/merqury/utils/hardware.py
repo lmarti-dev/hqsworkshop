@@ -10,7 +10,8 @@ from iqm.qiskit_iqm.fake_backends.fake_aphrodite import IQMFakeAphrodite
 from iqm.qiskit_iqm.fake_backends.fake_adonis import IQMFakeAdonis
 from iqm.qiskit_iqm.fake_backends.iqm_fake_backend import IQMFakeBackend
 from iqm.qiskit_iqm import IQMProvider, IQMBackend, IQMJob
-
+from qiskit_addon_sqd.counts import counts_to_arrays
+from qiskit_addon_sqd.qubit import solve_qubit
 
 from qiskit import transpile
 
@@ -81,15 +82,6 @@ def get_token():
     return token
 
 
-def get_ibm_backend(n_qubits: int) -> IBMBackend:
-    token = get_token("IBM")
-    service = QiskitRuntimeService(channel="ibm_quantum", token=token)
-    real_backend = service.least_busy(
-        simulator=False, operational=True, min_num_qubits=n_qubits
-    )
-    return real_backend
-
-
 def get_tfim_ratio(ham: SparsePauliOp) -> float:
     c = ham.coeffs
     u = np.unique_counts(c)
@@ -99,10 +91,13 @@ def get_tfim_ratio(ham: SparsePauliOp) -> float:
     return np.real(j / h).astype(float)
 
 
-def get_backend(device_name: str):
+def get_iqm_backend(n_qubits: int) -> "IQMBackend":
+    if n_qubits < 20:
+        device_name = "garnet"
+    else:
+        device_name = "emerald"
     url = f"https://cocos.resonance.meetiqm.com/{device_name}"
-    backend = IQMProvider(url, token=get_token()).get_backend()
-    return backend
+    return IQMProvider(url, token=get_token()).get_backend()
 
 
 def add_meas_layer(circuit: QuantumCircuit) -> QuantumCircuit:
@@ -200,6 +195,14 @@ def subspace_diagonalize(
     sub_ham += np.triu(sub_ham, k=1).T
     ground_energy = np.min(np.linalg.eigvalsh(sub_ham))
     return ground_energy, sub_ham
+
+
+def subspace_diagonalize_qiskit(counts: dict, hamiltonian: SparsePauliOp):
+    bitstring_matrix_full, probs_array_full = counts_to_arrays(counts)
+    eig_energies, eig_vecs = solve_qubit(
+        bitstring_matrix_full, hamiltonian, verbose=True, which="SA"
+    )
+    return eig_energies, eig_vecs
 
 
 def isa_circuit_param_dict(
@@ -378,7 +381,7 @@ def measure_ground_state_energy_subspace_sampling(
         print(f"Statevector {relerr(statevector_energy):.5e}")
 
     if run_on_hardware:
-        real_backend = get_backend(device_name)
+        real_backend = get_iqm_backend(device_name)
         real_job = backend_sample(
             backend=real_backend,
             circuit=circuit_to_sample,
@@ -437,6 +440,85 @@ def measure_ground_state_energy_subspace_sampling(
         }
 
     return var_dict
+
+
+def loop_measure_ground_state_energy_subspace_sampling_v2(
+    hamiltonian: SparsePauliOp,
+    circuit: QuantumCircuit,
+    which_backends: list[str],
+    ground_energy: float,
+    n_shots: int = 1e3,
+) -> dict:
+
+    d = {
+        "system": {
+            "ground_energy": ground_energy,
+            "n_qubits": circuit.num_qubits,
+            "hamiltonian": hamiltonian,
+            "ratio": get_tfim_ratio(hamiltonian),
+        }
+    }
+
+    for which_backend in which_backends:
+        item = measure_ground_state_energy_subspace_sampling_v2(
+            hamiltonian, ground_energy, circuit, which_backend, n_shots
+        )
+        d[which_backend] = item[which_backend]
+    return d
+
+
+def measure_ground_state_energy_subspace_sampling_v2(
+    hamiltonian: SparsePauliOp,
+    ground_energy: float,
+    circuit: QuantumCircuit,
+    which_backend: str,
+    n_shots: int = 1e3,
+) -> dict:
+
+    def relerr(e):
+        return np.abs(e - ground_energy) / np.abs(ground_energy)
+
+    circuit_to_sample = add_meas_layer(circuit)
+
+    if which_backend == "statevector":
+        comp_energy = sv_estimate_observables(
+            circuit=circuit, observables=[hamiltonian], param_sweep=[]
+        ).data.evs[0]
+
+        sv = StatevectorSampler()
+
+        job = sv.run([circuit_to_sample], shots=n_shots)
+
+        counts = job.result()[0].join_data().get_counts()
+
+        bn = which_backend
+
+        print(f"Statevector err {relerr(comp_energy):.5e}; sampling is done")
+
+    elif which_backend == "fake_backend" or which_backend == "real_backend":
+        if which_backend == "real_backend":
+            backend = get_iqm_backend(circuit.num_qubits)
+        else:
+            backend = get_appropriate_fake_backend(circuit.num_qubits)
+
+        fake_job = backend_sample(
+            backend=backend,
+            circuit=circuit_to_sample,
+            parameters=[],
+            n_shots=n_shots,
+        )
+        counts = get_counts_from_job(fake_job)
+
+        bn = backend.name
+        print(f"{which_backend} ({backend.name}); sampling is done")
+
+    return {
+        which_backend: {
+            "name": bn,
+            "counts": counts,
+            "n_shots": n_shots,
+        }
+    }
 
 
 def prep_nup_ndown_circ(n_up: int, n_down: int, n_qubits: int) -> QuantumCircuit:

@@ -2,7 +2,9 @@ from pathlib import Path
 
 from merqury.utils.hardware import (
     measure_ground_state_energy_subspace_sampling,
+    loop_measure_ground_state_energy_subspace_sampling_v2,
     subspace_diagonalize,
+    subspace_diagonalize_qiskit,
 )
 from merqury.utils.json_utils import save_json
 import os
@@ -186,6 +188,83 @@ def compute_ground_energy_sweep(
     return d_out
 
 
+def merge_counts(d_out: dict, which_backend: str) -> dict:
+    all_counts = d_out[1][which_backend]["counts"]
+    for k in d_out[0][which_backend]["counts"]:
+        if k not in all_counts.keys():
+            all_counts[k] = d_out[0][which_backend]["counts"][k]
+        else:
+            all_counts[k] += d_out[0][which_backend]["counts"][k]
+    bs_len = len(all_counts[k])
+    hilb_size = 2**bs_len
+    n_bs = len(all_counts)
+    print(f"bitstring subspace: {n_bs}/{hilb_size}, {n_bs/hilb_size:.5e}%")
+    return all_counts
+
+
+def compute_ground_energy_sweep_v2(
+    filename: str, n_shots: int, which_backends: list, solve: bool
+) -> dict:
+
+    d_out = {}
+
+    for nth in (0, 1):
+
+        print(f"==== nth: {nth} ====")
+
+        ham1 = load_ham(filename)
+
+        ham0 = get_diagonal_ham(ham1)
+        bitstring = get_nth_bitstring_v2(ham0, nth, False)
+        prep_circ = prep_circ_bitstring(bitstring)
+
+        mult = 1
+
+        total_time = mult / (get_min_gap(ham1) ** 2)
+
+        n_steps = int(mult * ham0.num_qubits)
+
+        if solve:
+            true_energy = get_nth_energy(ham1, nth)
+        else:
+            true_energy = 1000
+        sweep_circuit = get_sweep_circuit(
+            ham0, ham1, total_time=total_time, n_steps=n_steps
+        )
+        print("sweep circuit ready")
+        prep_circ.compose(sweep_circuit, inplace=True)
+        energy_dict = loop_measure_ground_state_energy_subspace_sampling_v2(
+            ham1, prep_circ, which_backends, true_energy, n_shots=n_shots
+        )
+
+        d_out[nth] = energy_dict
+
+    if solve:
+        s_true = diagonalize_hamiltonian_splitting(ham1)
+        energy_dict["system"]["splitting"] = s_true
+        print(f"True Splitting: {s_true:.5e}")
+
+    assert d_out[0].keys() == d_out[1].keys()
+    keys = d_out[0].keys()
+
+    for k in keys:
+        if k != "system":
+            all_counts = merge_counts(d_out, k)
+            eig_energies, eig_vecs = subspace_diagonalize_qiskit(all_counts, ham1)
+            sp = compute_splittings_e(eig_energies[1], eig_energies[0])
+            print(f"Splitting (e1-e0): {sp:.5e} for {k}")
+            energy_dict[k]["splitting"] = sp
+    for k in keys:
+        try:
+
+            del d_out[1][k]["counts"]
+            del d_out[0][k]["counts"]
+        except Exception:
+            pass
+
+    return d_out
+
+
 def get_n_qubits(fn: str) -> int:
     fn = fn.replace("pauli_hamiltonian_", "")
     fn = fn.replace("qubits.npy", "")
@@ -198,15 +277,16 @@ def out_exists(filename):
     return p.exists()
 
 
-if __name__ == "__main__":
-
+def run_v1():
     filenames = os.listdir(Path(Path(__file__).parent, "../files"))
 
     filenames = sorted(filenames, key=lambda x: get_n_qubits(x))
 
+    dry_run = True
+
     for filename in filenames:
 
-        if not out_exists(filename):
+        if not out_exists(filename) or dry_run:
             if get_n_qubits(filename) < 14:
                 solve_ham = True
                 run_sv = True
@@ -227,5 +307,39 @@ if __name__ == "__main__":
                 n_shots=1000,
                 device_name="emerald",
             )
+            if not dry_run:
+                save_json(Path(filename).stem + ".json", d_out)
 
-            save_json(Path(filename).stem + ".json", d_out)
+
+def run_v2():
+    filenames = os.listdir(Path(Path(__file__).parent, "../files"))
+
+    filenames = sorted(filenames, key=lambda x: get_n_qubits(x))
+
+    dry_run = False
+
+    for filename in filenames:
+        n_qubits = get_n_qubits(filename)
+        if not out_exists(filename) or dry_run:
+            if n_qubits < 16:
+                solve = True
+                which_backends = ["statevector", "fake_backend"]
+            else:
+                solve = False
+                which_backends = ["real_backend"]
+
+            d_out = compute_ground_energy_sweep_v2(
+                filename,
+                which_backends=which_backends,
+                solve=solve,
+                n_shots=1000,
+            )
+            if not dry_run:
+                save_json(Path(filename).stem + ".json", d_out)
+
+            if n_qubits == 14:
+                break
+
+
+if __name__ == "__main__":
+    run_v2()

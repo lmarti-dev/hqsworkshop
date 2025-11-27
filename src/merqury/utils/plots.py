@@ -29,7 +29,9 @@ def get_backend_splits(d: dict, backend: str):
     return x, y
 
 
-filenames = os.listdir(Path(Path(__file__).parent, "../output"))
+dirname = "output_v2"
+
+filenames = os.listdir(Path(Path(__file__).parent, f"../{dirname}"))
 d = {}
 
 for filename in filenames:
@@ -49,6 +51,6 @@ ax.legend()
 ax.set_ylabel("Energy splitting")
 ax.set_xlabel("Qubits")
 
-plt.savefig(Path(Path(__file__).parent, "../plots/main.png"))
+plt.savefig(Path(Path(__file__).parent, "../plots/main_v2.png"))
 
 plt.show()
